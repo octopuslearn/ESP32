@@ -4372,6 +4372,40 @@
     {
         "children": [
             {
+                "children": [],
+                "depends_on": null,
+                "help": "\u4e00\u822c\u6765\u8bf4\u8fd9\u4e2aLEDGPIO\u53f7\u7801\u4f1a\u5199\u5728\u677f\u5b50\u7684\u6b63\u9762\u6216\u80cc\u9762",
+                "id": "LED_GPIO_NUM",
+                "name": "LED_GPIO_NUM",
+                "range": [
+                    0,
+                    39
+                ],
+                "title": "ESP\u4e3b\u677f\u4e0a\u8fde\u63a5\u5230\u7684LE\u7684\u5f15\u811a",
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "\u95ea\u70c1\u65f6\u95f4 \u6beb\u79d2",
+                "id": "DELAY_TIME_MS",
+                "name": "DELAY_TIME_MS",
+                "range": [
+                    100,
+                    5000
+                ],
+                "title": "\u95ea\u70c1\u65f6\u95f4",
+                "type": "int"
+            }
+        ],
+        "depends_on": null,
+        "id": "\u70b9\u706f\u914d\u7f6e",
+        "title": "\u70b9\u706f\u914d\u7f6e",
+        "type": "menu"
+    },
+    {
+        "children": [
+            {
                 "children": [
                     {
                         "children": [],

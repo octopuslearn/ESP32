@@ -3,3 +3,4 @@ source "D:/SoftwareInstall/Espressif/frameworks/esp-idf-v5.1/components/esp_app_
 source "D:/SoftwareInstall/Espressif/frameworks/esp-idf-v5.1/components/esp_rom/Kconfig.projbuild"
 source "D:/SoftwareInstall/Espressif/frameworks/esp-idf-v5.1/components/esptool_py/Kconfig.projbuild"
 source "D:/SoftwareInstall/Espressif/frameworks/esp-idf-v5.1/components/partition_table/Kconfig.projbuild"
+source "E:/project/ESP32_learn/idf_esp_32/project/test_1.0/main/Kconfig.projbuild"
