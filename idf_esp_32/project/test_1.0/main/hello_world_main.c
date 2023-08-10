@@ -5,9 +5,20 @@
 #include "freertos/task.h"
 
 int count = 0;
+char ptrTaskList[250];
+
+
 void app_main(void)
 {  
-    count = 100;
+    /*不知道上哪去设置，v5.1没找到*/
+    vTaskList(ptrTaskList);
+    printf("***********************\n");
+    printf("Task        State   Prio    Num\n");
+    printf("***********************\n");
+    printf(ptrTaskList);
+    printf("***********************\n");
+    /*不知道上哪去设置，v5.1没找到*/
+
     ESP_LOGI("COUNTER","Tick(ms) : %ld",portTICK_PERIOD_MS);
     while(1)
     {
