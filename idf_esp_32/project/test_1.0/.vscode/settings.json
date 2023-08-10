@@ -17,6 +17,7 @@
     "idf.toolsPathWin": "D:\\SoftwareInstall\\Espressif",
     "idf.flashType": "UART",
     "files.associations": {
-        "esp_log.h": "c"
+        "esp_log.h": "c",
+        "task.h": "c"
     }
 }
