@@ -6,11 +6,20 @@
 
 #include <stdio.h>
 #include "esp_log.h"
+#include <stdbool.h>
 
 const char* tag="绒布球";
 
+bool secretLog = true;
+
 void app_main(void)
 {
+
+if(secretLog == true)
+{
+    esp_log_level_set(tag, ESP_LOG_VERBOSE);//当按键被按下，则设置为输出详细信息
+}
+
 
 /*E,W,I是给用户看的*/
     //E error
