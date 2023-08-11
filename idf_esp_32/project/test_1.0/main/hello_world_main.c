@@ -25,9 +25,9 @@ void app_main(void)
 {
     vTaskDelay(1000/portTICK_PERIOD_MS);//I (1366) NVS: KEY:VALUE counter:0 
 
-    printMemory((unsigned char *)&num,4);
-    num=100;
-    printMemory((unsigned char *)&num,4);
+    // printMemory((unsigned char *)&num,4);
+    // num=100;
+    // printMemory((unsigned char *)&num,4);
 
     char* ocLearn_name_space = "ocLearn_1234";////问题在这，更改了ocLearn_1234到ocLearn_1234567就会出现一直是0
     nvs_flash_init();//相当于把u盘插到电脑上
@@ -43,7 +43,13 @@ typedef struct{
     char password[50];
 } ap_t;
 
-ap_t aps_set[max_ap];//创建结构体的数组
+ap_t aps_set[max_ap];//创建结构体的数组////声明
+
+//printMemory((unsigned char *)&aps_set,sizeof(aps_set));
+//只声明不初始化20000600204dfb3f00000000044cfb3f0c4cfb3f23000600ffff3fb3ffff3fb319000000204cfb3f204afb3f0200000020b10880604dfb3fe0370e40183f403fc04dfb3fa04dfb3f0c000000ffff3fb3a04dfb3f0c000000842afb3fffff3fb38cad0e80904dfb3f03000000183f403fc04dfb3fa04dfb3f0c00000010000000983f403fc04dfb3fa04dfb3f0c000000dc840880e04dfb3f183f403f01000000c04dfb3fa04dfb3f0c000000ffff3fb3dc840880e04dfb3f0300000051010000183f403f00000000
+memset(aps_set,0,sizeof(aps_set));//初始化//声明后必须初始化
+printMemory((unsigned char *)&aps_set,sizeof(aps_set));
+//声明初始化0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 for(int i=0;i<max_ap;i++)
 {
