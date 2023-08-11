@@ -3,15 +3,13 @@
 #include "nvs_flash.h"
 #include "esp_log.h"
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
+
 
 
 
 void app_main(void)
 {
-    vTaskDelay(1000/portTICK_PERIOD_MS);//I (1366) NVS: KEY:VALUE counter:0 
-    char * ocLearn_name_space = "ocLearn_123456789";
+    char* ocLearn_name_space = "ocLearn_1234";
     nvs_flash_init();//相当于把u盘插到电脑上
     nvs_handle_t ocLearn_handle;//句柄，所谓句柄就是文件夹的窗口
 
@@ -26,12 +24,11 @@ void app_main(void)
     nvs_get_u32(ocLearn_handle, counter_key, &counter_val);//找文件夹里有没有counter文件,有的话计数
     ESP_LOGI("NVS","KEY:VALUE %s:%ld ",counter_key,counter_val);
     
-    // counter_val++;
-    ++counter_val;
+    counter_val++;
 
     nvs_set_u32(ocLearn_handle, counter_key, counter_val);//到文件夹里创建了一个新的文件counter文件，value是1
 
     nvs_close(ocLearn_handle);
     nvs_flash_deinit();
-    //I (367) NVS: KEY:VALUE counter:1 //这是因为小火焰标志是build flash monitor在flash和monitor之间已经运行了一次
+    //I (367) NVS: KEY:VALUE counter:1 
 }
