@@ -2,13 +2,15 @@
 #include <stdio.h>
 #include "nvs_flash.h"
 #include "esp_log.h"
-
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 
 
 
 void app_main(void)
 {
+    vTaskDelay(1000/portTICK_PERIOD_MS);//I (1366) NVS: KEY:VALUE counter:0 
     char* ocLearn_name_space = "ocLearn_1234";
     nvs_flash_init();//相当于把u盘插到电脑上
     nvs_handle_t ocLearn_handle;//句柄，所谓句柄就是文件夹的窗口

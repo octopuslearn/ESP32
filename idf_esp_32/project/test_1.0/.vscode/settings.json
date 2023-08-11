@@ -21,6 +21,7 @@
         "task.h": "c",
         "iosfwd": "c",
         "xlocbuf": "c",
-        "filesystem": "c"
+        "filesystem": "c",
+        "freertos.h": "c"
     }
 }
