@@ -29,6 +29,7 @@ void app_main(void)
     counter_val++;
 
     nvs_set_u32(ocLearn_handle, counter_key, counter_val);//到文件夹里创建了一个新的文件counter文件，value是1
+    nvs_commit(ocLearn_handle);//快速执行nvs_set_u32
 
     nvs_close(ocLearn_handle);
     nvs_flash_deinit();
