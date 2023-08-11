@@ -10,8 +10,8 @@
 
 void app_main(void)
 {
-    vTaskDelay(1000/portTICK_PERIOD_MS);
-    char* ocLearn_name_space = "ocLearn_123456789";
+    vTaskDelay(1000/portTICK_PERIOD_MS);//I (1366) NVS: KEY:VALUE counter:0 
+    char * ocLearn_name_space = "ocLearn_123456789";
     nvs_flash_init();//相当于把u盘插到电脑上
     nvs_handle_t ocLearn_handle;//句柄，所谓句柄就是文件夹的窗口
 
@@ -26,7 +26,8 @@ void app_main(void)
     nvs_get_u32(ocLearn_handle, counter_key, &counter_val);//找文件夹里有没有counter文件,有的话计数
     ESP_LOGI("NVS","KEY:VALUE %s:%ld ",counter_key,counter_val);
     
-    counter_val++;
+    // counter_val++;
+    ++counter_val;
 
     nvs_set_u32(ocLearn_handle, counter_key, counter_val);//到文件夹里创建了一个新的文件counter文件，value是1
 
