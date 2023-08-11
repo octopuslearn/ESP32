@@ -30,5 +30,5 @@ void app_main(void)
 
     nvs_close(ocLearn_handle);
     nvs_flash_deinit();
-    //I (367) NVS: KEY:VALUE counter:1 
+    //I (367) NVS: KEY:VALUE counter:1 //这是因为小火焰标志是build flash monitor在flash和monitor之间已经运行了一次
 }
