@@ -26,16 +26,16 @@ void app_main(void)
 
 
 
-    // Example of nvs_get_stats() to get the number of used entries and free entries:
-    nvs_stats_t nvs_stats;
-    nvs_get_stats("nvs", &nvs_stats);
-    printf("Count: UsedEntries = (%d), FreeEntries = (%d), AllEntries = (%d)\n",
-           nvs_stats.used_entries, nvs_stats.free_entries, nvs_stats.total_entries);
+// Example of nvs_get_stats() to get the number of used entries and free entries:
+nvs_stats_t nvs_stats;
+nvs_get_stats(NULL, &nvs_stats);
+printf("Count: UsedEntries = (%d), FreeEntries = (%d), AllEntries = (%d)\n",
+       nvs_stats.used_entries, nvs_stats.free_entries, nvs_stats.total_entries);
 
 
-    nvs_get_stats(ocLearn_handle, &nvs_stats);
-    printf("Count: UsedEntries = (%d), FreeEntries = (%d), AllEntries = (%d)\n",
-           nvs_stats.used_entries, nvs_stats.free_entries, nvs_stats.total_entries);
+nvs_get_stats(part_name, &nvs_stats);
+printf("Count: UsedEntries = (%d), FreeEntries = (%d), AllEntries = (%d)\n",
+       nvs_stats.used_entries, nvs_stats.free_entries, nvs_stats.total_entries);
 
 
 
