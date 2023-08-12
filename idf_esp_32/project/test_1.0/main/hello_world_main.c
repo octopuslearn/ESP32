@@ -64,8 +64,10 @@ void app_main(void)
     char key[15];
     sprintf(key,"key %lu", esp_random());////此处我查资料字节写的%lu
     
-    ESP_ERROR_CHECK(nvs_set_blob(ocLearn_handle,key,aps_set,sizeof(aps_set)));//向NVS中写入了复杂二进制数据
+    ESP_ERROR_CHECK(nvs_set_blob(ocLearn_handle,key,aps_set,sizeof(aps_set)));//返回的不是ESP_OK就重启
     
+
+    assert(false);//检查这里面，如果是true-继续运行，如若是false则重启
     
     nvs_commit(ocLearn_handle);//快速执行nvs_set_u32
     // if(erro ==  ESP_OK)
