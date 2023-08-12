@@ -22,6 +22,7 @@
         "iosfwd": "c",
         "xlocbuf": "c",
         "filesystem": "c",
-        "freertos.h": "c"
+        "freertos.h": "c",
+        "esp_err.h": "c"
     }
 }
