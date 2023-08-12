@@ -35,10 +35,12 @@ void app_main(void)
     char* ocLearn_name_space = "ocLearn_1234";////问题在这，更改了ocLearn_1234到ocLearn_1234567就会出现一直是0
     esp_err_t err = nvs_flash_init();//相当于把u盘插到电脑上
 
-    // ESP_ERROR_CHECK(nvs_flash_init());//倘若，NVS初始化不成功，会用尝试重启的方式再次初始化
+
+     char* part_name = "mynvs";
+    ESP_ERROR_CHECK(nvs_flash_init_partition(part_name));////注意：分区更改后，这里也要改
 
     nvs_handle_t ocLearn_handle;//句柄，所谓句柄就是文件夹的窗口
-    nvs_open(ocLearn_handle,NVS_READWRITE, &ocLearn_handle);//这一步相当于建立了个ocLearn_handle文件夹，并打开了他，他是可读可写的//NVS_READWRITE-给了读写权限
+    nvs_open_from_partition(part_name,ocLearn_name_space,NVS_READWRITE, &ocLearn_handle);////注意：分区更改后，这里也要改
 
 
 
@@ -67,7 +69,7 @@ void app_main(void)
     ESP_ERROR_CHECK(nvs_set_blob(ocLearn_handle,key,aps_set,sizeof(aps_set)));//返回的不是ESP_OK就重启
     
 
-    assert(false);//检查这里面，如果是true-继续运行，如若是false则重启
+    // assert(false);//检查这里面，如果是true-继续运行，如若是false则重启
     
     nvs_commit(ocLearn_handle);//快速执行nvs_set_u32
     // if(erro ==  ESP_OK)
@@ -87,7 +89,7 @@ void app_main(void)
 
     for(int i=0;i<max_ap;i++)
     {
-            //ESP_LOGI("NVS","ssid:password  %s:%s",aps_get[i].ssid,aps_get[i].password);
+            ESP_LOGI("NVS","ssid:password  %s:%s",aps_get[i].ssid,aps_get[i].password);
     }
 
     nvs_commit(ocLearn_handle);//快速执行nvs_set_u32
