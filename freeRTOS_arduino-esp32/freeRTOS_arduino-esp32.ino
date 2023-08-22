@@ -9,7 +9,10 @@ void task1(void *pt)//形参-空指针
     {
       digitalWrite(led1,!digitalRead(led1));
       //delay(1000);//阻塞
-      vTaskDelay(2000);//freeRTOS的延时函数
+      int timeDelay = 2000;//ms
+
+      //vTaskDelay(pdMS_TO_TICKS(timeDelay));//pdMS_TO_TICKS-将时间转换成节拍数
+      vTaskDelay(2000/portTICK_PERIOD_MS);//portTICK_PERIOD_MS将ms单位转换成时钟节拍数
     }
 }
 
