@@ -8,6 +8,7 @@ void taskA(void *ptParma);
 void setup()
 {
   Serial.begin(9600);
+  disableCore0WDT();//法3：手动关闭CPU上的TWDT////慎重使用
   demo1();
 }
 
