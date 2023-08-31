@@ -1,122 +1,168 @@
-//arduino esp32 默认在core0开启看门狗5s的IDLE任务 
-//core0和1都运行IDLE任务，优先级0
-//  IDLE任务时用于清除被删除的任务
-//core1 运行loopBack任务，即setup loop优先级1
 
-#include "esp_task_wdt.h"
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 20, 4);
+TaskHandle_t taskHandle = NULL;//创建句柄
+int taskMem = 1024;
 
-TaskHandle_t taskHandle;
 
-void demo1();
-void taskA(void *ptParma);
+QueueHandle_t queueMsq = xQueueCreate(8, sizeof(char[20]));//创建队列，长度8，尺寸sizeof(char[20])////对于lcd一行能够显示20个字符，存了8行。但是实际上每行20个字符，4行是极限
+//返回随机的文字
+String randomMsg() {
+  String myStrings[] = {
+    "Nice to meet you",
+    "Where are U from?",
+    "What do you do?",
+    "What do U like?",
+    "What is UR num?",
+    "Do U have FB?",
+    "Thanks so much.",
+    "I am Chinese.",
+    "I do not KNOW.",
+    "Thank you.",
+    "That helps.",
+    "I Love U",
+    "Do U miss me?",
+    "Be careful.",
+    "Don't worry.",
+    "Good idea.",
+    "He's right.",
+    "I ate already.",
+    "More than that.",
+    "Nothing else.",
+    "See you later.",
+    "Take it outside.",
+  };
+  return myStrings[random(0, 22)];
+}
 
-void demo2();
+
+
+
+
+
+
+
+
+
+void taskA(void *ptParam);
 void taskB(void *ptParma);
 
-
-void setup()
-{
+void setup() {
   Serial.begin(9600);
-  //disableCore0WDT();//法3：手动关闭CPU上的TWDT////慎重使用
-  //demo1();//core0默认开启了看门狗，倘若没有运行IDLE或者没有手动喂狗，或者没有关闭看门狗，那么5s会自动重启（默认值，arduino esp32上不知道如何更尬）
-  esp_task_wdt_add(NULL);//NULL指将本任务添加给看门狗//demo2手动喂狗
-  demo2();//core1没有默认开启看门狗，所有task占用资源不放，也不会重启
 
+  xTaskCreate(taskA,"taskA",taskMem*8,NULL,1,NULL);
+  xTaskCreate(taskB,"taskB",taskMem*8,NULL,1,NULL);
+  xTaskCreate(taskC,"taskC",taskMem*8,NULL,1,NULL);
 
+  xTaskCreate(lcdTask,"lcd",1024*8,NULL,1,NULL);
 
-//###demo1和demo2一起运行，demo1 core0 有看门狗，taskA占用资源，无法运行IDLE-会重启。demo2 core1 无看门狗，taskB占用资源，不会重启。
-//   lookBack Task - Priority 1
-// lookBack Task - Priority 1
-// lookBack TasE (10100) task_wdt: Task watchdog got triggered. The following tasks did not reset the watchdog in time:
-// E (10100) task_wdt:  - IDLE (CPU 0)
-// E (10100) task_wdt: Tasks currently running:
-// E (10100) task_wdt: CPU 0: taskA
-// E (10100) task_wdt: CPU 1: taskB
-// E (10100) task_wdt: Aborting.
-
-// abort() was called at PC 0x420082d0 on core 0
-
-
-// Backtrace: 0x40376ff6:0x3fc923e0 0x4037a1b5:0x3fc92400 0x4037f845:0x3fc92420 0x420082d0:0x3fc924a0 0x40377fa5:0x3fc924c0 0x4202093c:0x3fced500
-
-
-
-
-// ELF file SHA256: d25f26f1da1bce4f
 }
-
-void loop()
-{
-   esp_task_wdt_reset();//demo2手动喂狗
-
-//    Rebooting...
-// �E (10099) task_wdt: Task watchdog got triggered. The following tasks did not reset the watchdog in time:
-// E (10099) task_wdt:  - loopTask (CPU 1)
-// E (10099) task_wdt: Tasks currently running:
-// E (10099) task_wdt: CPU 0: IDLE
-// E (10099) task_wdt: CPU 1: taskB
-// E (10099) task_wdt: Aborting.
-
-// abort() was called at PC 0x420082b8 on core 0
-
-
-// Backtrace: 0x40376ff6:0x3fc923e0 0x4037a1b5:0x3fc9
-  Serial.println("lookBack Task - Priority 1");
+void loop() {
+  // put your main code here, to run repeatedly:
 }
 
 
 
 
-
-
-void demo1()
+void taskA(void *ptParam)
 {
-  //core0上运行两个任务，一个是IDLE 优先级0，一个是taskA优先级1
-  xTaskCreatePinnedToCore(taskA, "taskA", 1024*4, NULL, 1, NULL, 0);
-}
+  char msg[20];
+  String userID = "A: ";
 
-void taskA(void *ptParma)
-{
-  //core0上运行两个任务，一个是IDLE 优先级0，一个是taskA 优先级1
-  //由于taskA优先级1高，taskA没有Block和Suspend所以不会释放资源，所以不会运行IDLE
-  //会重启的理由：core0默认开启看门狗，默认时间5s，由于无法运行IDLE，所以无法喂狗，所以5s重启
-  // lookBack Task - Priority 1
-// lookBack Task - Priority 1
-// lookBack Task - Priority 1
-// lookBE (10098) task_wdt: Task watchdog got triggered. The following tasks did not reset the watchdog in time:
-// E (10098) task_wdt:  - IDLE (CPU 0)
-// E (10098) task_wdt: Tasks currently running:
-// E (10098) task_wdt: CPU 0: taskA
-
-  //解决方法1：taskA Block(vTaskDelay)或者Suspend(vTaskSuspend)
-// lookBack Task - Priority 1
-// lookBack Task - Priority 1
-// lookBack Task - Priority 1
-// lookBack Task - Priority 1
-// lookBack Task - Priority 1
   while(1)
   {
-    //vTaskDelay(1);//法1，Block
-    // TaskHandle_t taskHandle;//法2 Suspend
-    //vTaskSuspend(taskHandle);
+    (userID+randomMsg()).toCharArray(msg,20);//ID+随机返回的一行话。将上述的这些内容存放到msg数组里
+    
+    // TickType_t timeOut = portMAX_DELAY;//无限期等待49天
+    TickType_t timeOut = 10;//等待10个tick
+    if (xQueueSend(queueMsq, &msg, timeOut) != pdPASS) //向队列中发送数据，若果队列数据是满的，那么等待timeOut个tick,如果等待这么长时间后依旧是满的，那么就舍弃了这次写操作
+    { 
+      Serial.print(userID);//获取开机至当前tick
+      Serial.println("Queue is full.");
+    }
+    vTaskDelay(2000);
   }
 }
 
-
-void demo2()
+void taskB(void *ptParam)
 {
-  xTaskCreatePinnedToCore(taskB, "taskB", 1024*4, NULL, 2, NULL, 1);
-}
+  char msg[20];
+  String userID = "B: ";
 
-void taskB(void *ptParma)
-{
-  while(1)//有5s的看门狗
+  while(1)
   {
-     vTaskDelay(1);
-     //demo2 Block 运行了优先级1的loopBlock-手动喂狗。###但是IDEL 优先级为0仍旧无法运行------------->必须给loopBlock中也弄一个tick才行
-    //vTaskSuspend(taskHandle);
+    (userID + randomMsg()).toCharArray(msg, 20);//将ID+随机显示的存入数组msg中
+
+    TickType_t timeOut = 10;
+    if(xQueueSend(queueMsq, &msg, timeOut) != pdPASS)//当timeOut内队列仍旧是满的，则放弃这一次的发送
+    {
+      Serial.print(userID);
+      Serial.println("Queue is full.");
+    }
+
+    vTaskDelay(2000);
   }
+
+}
+
+void taskC(void *ptParam)
+{
+  char msg[20];
+  String userID = "C: ";
+
+  while(1)
+  {
+    (userID + randomMsg()).toCharArray(msg, 20);//将ID+随机显示的存入数组msg中
+
+    TickType_t timeOut = 10;
+    if(xQueueSend(queueMsq, &msg, timeOut) != pdPASS)//当timeOut内队列仍旧是满的，则放弃这一次的发送
+    {
+      Serial.print(userID);
+      Serial.println("Queue is full.");
+    }
+
+    vTaskDelay(2000);
+  }
+
 }
 
 
 
+void lcdTask(void *ptParam) {  //LCD任务主体
+
+  lcd.init();
+  lcd.backlight();
+
+  char line0[20] = {' '};
+  char line1[20] = {' '};
+  char line2[20] = {' '};
+  char line3[20] = {' '};
+  char * lines[] = { line0, line1, line2, line3 };
+
+  while (1) {
+    //文字向上滚动
+    strcpy(line0, line1);
+    strcpy(line1, line2);
+    strcpy(line2, line3);
+
+    //TickType_t timeOut = portMAX_DELAY;
+    TickType_t timeOut = 10;
+    //timeOut-运行这句话时一直是空的，那么就等10个tick，倘若10个tick内读取一直是空的那么就放弃
+    if (xQueueReceive(queueMsq, lines[3], timeOut) == pdPASS) {//lines[3]-将最新的话显示在最后一行
+      //显示所有的4行文字
+      for (int i = 3; i >= 0; i--) {
+        lcd.setCursor(0, i);
+        lcd.print("                    "); //clear this line
+        lcd.setCursor(0, i);
+        lcd.print(lines[i]);
+      }
+    }  else {
+      Serial.println("Message Queue is Empty");
+    };
+
+
+
+
+     vTaskDelay(10);
+  }
+}
