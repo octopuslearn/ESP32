@@ -9,9 +9,9 @@ void button(void *ptParma)
   pinMode(22, INPUT_PULLUP);
   while(1)
   {
-    if(digitalRead(22) == LOW)
+    if(digitalRead(22) == LOW)//###发现按键按下去了，则给了个信号量--->内存中的这个量就变成1
     {
-      xSemaphoreGive(xSemaLED);//发送信号
+      xSemaphoreGive(xSemaLED);
       vTaskDelay(100);
     }
   }
@@ -22,7 +22,7 @@ void led(void *ptParma)
   pinMode(23, OUTPUT);
   while(1)
   {
-    if(xSemaphoreTake(xSemaLED, timeOut) == pdTRUE)//消费者-1返回pdPASS,或者pdFAIL
+    if(xSemaphoreTake(xSemaLED, timeOut) == pdTRUE)//###判断当前信号量，是1则执行下面的程序，并且将1变成了0
     {
       digitalWrite(23,!digitalRead(23));
       vTaskDelay(1000);
