@@ -75,7 +75,26 @@ void consumerA(void *ptParma)
       Serial.print("   Event Group Value:");
       Serial.println(uxBits ,BIN);//以二进制格式打印
     }
-    vTaskDelete(NULL);//删除任务理由：不删除的话，会一直执行这个任务
+
+    //////最终------------------------------------------------
+    uxBits = xEventGroupWaitBits(xEventPurchase,//Event Group Hanler-事件组句柄
+                                ADDTOCART_0|PAYMENT_1|INVENTORY_2,    //等待事件组中的那个bit置1，即ADDTOCART_0 = 1
+                                pdFALSE,        //执行后，对应的的bits是否重置为0
+                                pdTRUE,         //等待的bit的关系，True-&，Fall-|
+                                TimeOut);    
+    if((uxBits & ADDTOCART_0)&&(uxBits & PAYMENT_1)&&(uxBits & INVENTORY_2))
+    {
+      for (int i = 0; i < random(100, 200); i++) vTaskDelay(10);
+
+      xEventGroupClearBits(xEventPurchase, ALLBITS);//重置24bits
+      uxBits = xEventGroupGetBits(xEventPurchase);
+      Serial.println("交易完成, RESET Event Group");
+      Serial.print("   Event Group Value:");
+      Serial.println(uxBits, BIN);
+      Serial.println("");
+    }
+
+    vTaskDelete(NULL);
   }
 }
 
