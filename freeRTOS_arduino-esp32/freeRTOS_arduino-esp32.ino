@@ -1,146 +1,132 @@
-//学事件组是为了看懂别人写的代码，从10.0开始有更好的东西
+#include <freertos/stream_buffer.h>
+
+StreamBufferHandle_t xStreamMusic = NULL;//创建句柄
+/******************以下,为获取音频，解码。。。不研究******************/
+#define BUZZER_PIN 32
+#define BUZZER_CHANNEL 0
+
+ typedef struct {
+  int noteVal;
+  int octaveVal;
+  int restVal;
+} BUZZERTONE;
+
+//随机返回生成的音乐代码，每次的长度不一样
+String randomMusic() {
+  String randomNote;
+  randomSeed(analogRead(34));
+  for (int i = 0; i < random(5, 20); i++) {
+    char note[10];
+    sprintf(note, "%d,%d,%d", random(0, 9), random(3, 6), random(100, 999));
+    randomNote = randomNote + "-" + String(note);
+  }
+  randomNote = randomNote.substring(1, randomNote.length());
+  return randomNote;
+}
+
+//对音乐流进行解码后，通过buzzer放出来
+void decode(String music) {
+  ledcAttachPin(BUZZER_PIN, BUZZER_CHANNEL);
+  do {
+    int index = music.indexOf('-');
+    String val = music.substring(0, index);
+    BUZZERTONE buzzertone;
+    buzzertone.noteVal = val.substring(0, 1).toInt();
+    buzzertone.octaveVal = val.substring(2, 3).toInt();
+    buzzertone.restVal = val.substring(4, 7).toInt();
+    ledcWriteNote(BUZZER_CHANNEL, (note_t)buzzertone.noteVal, buzzertone.octaveVal);
+    vTaskDelay(buzzertone.restVal);
+    if (music.indexOf('-') < 0) music = "";
+    music = music.substring(index + 1, music.length());
+  } while (music.length() > 0);
+  ledcDetachPin(BUZZER_PIN);
+}
+/******************以上，为获取音频，解码。。。不研究******************/
 
 
-//sync 1.set-1 2.wait-1
 
-
-
-#define ADDTOCART_0 (1<<0)
-#define PAYMENT_1   (1<<1)
-#define INVENTORY_2 (1<<2)
-
-#define ALLBITS 0xffffff  //24bits都是1
-
-//错误#define BOUGHT_PAID_SENT(ADDTOCART_0 | PAYMENT_1 | NVENTORY_2)  //000111
-#define BOUGHT_PAID_SENT  (ADDTOCART_0 | PAYMENT_1 | INVENTORY_2)  //000111
-
-EventGroupHandle_t xEventPurchase = NULL;//创建事件组
-const TickType_t TimeOut = 1000;
-
-
-void button(void *ptParma);
-void consumerA(void *ptParma);//添加进购物车
-void consumerB(void *ptParma);//支付
-void consumerC(void *ptParma);//出货
-
-
-void button(void *ptParma)
+void setup()
 {
-  pinMode(22, INPUT_PULLUP);
+   Serial.begin(115200);
+   //设置Stream Buffer最大尺寸，若果超出内存空间，那么创建Steam Buffer就会失败
+   const size_t xStreamBufferSizeBytes = 540;
+   const size_t xTriggerLevel = 8;//Stream Buff内部数据超过这个值，才会被读取--->相当于要传递的数据一帧有多少
+  
+   xStreamMusic = xStreamBufferCreate(xStreamBufferSizeBytes, xTriggerLevel);//创建Stream Buffer xStreamBufferSizeBytes-StreamBuffer大小，xTriggerLevel-一帧数据大小
+  
+  if(xStreamMusic == NULL)//创建失败，创建成功的话内部分配了内存，不能为NULL
+  {
+    Serial.println("UNABLE TO CREATE STREAM BUFFER");
+  }
+  else
+  {
+    xTaskCreate(taskA, "taskA", 1024*8, NULL, 1, NULL);
+    xTaskCreate(taskB, "taskB", 1024*8, NULL, 1, NULL);
+    // xTaskCreate(taskC, "taskC", 1024*8, NULL, 1, NULL);
+  }
+
+  vTaskDelete(NULL);  //setup和loop这个loopback任务没用了，删除
+}
+
+void loop()
+{
+
+}
+
+
+//下载音乐
+void taskA(void *ptParma)
+{
+  String music;
+  size_t xBytesSent;
+
   while(1)
   {
-    if(digitalRead(22) == LOW)//消费者-1返回pdPASS,或者pdFAIL
-    {
-      xEventGroupClearBits(xEventPurchase, ALLBITS);
-      Serial.println("用户真心决定下单了...");
-    
-      //放一些随机的延迟，否则运行的太快了，看不出效果
-      for (int i = 0; i < random(100, 200); i++) vTaskDelay(10);
-      Serial.println("商品已经添加到了购物车，付款中...");
+    //从网络下载音乐，放一些随机的延迟
+    for (int i = 0; i < random(20, 40); i++) vTaskDelay(1);
+    music = randomMusic(); //随机生成一些数据
 
-      //添加进购物车
-      xTaskCreate(consumerA,  "consumer a",   1024*6, NULL, 1, NULL);
-      //支付
-      xTaskCreate(consumerB,  "consumer b",   1024*6, NULL, 1, NULL);
-      //出货
-      xTaskCreate(consumerC,  "consumer c",   1024*6, NULL, 1, NULL);
-    
+//###正确的是在这里打印
+Serial.println(music);
+
+
+    xBytesSent = xStreamBufferSend(xStreamMusic,
+                                  (void *)&music, //复制到流缓冲区的内容
+                                  sizeof(music),  //复制到流缓冲区的最大字节数
+                                  portMAX_DELAY); //等到流缓冲区中有足够的空间
+    if(xBytesSent != sizeof(music))//确定尺寸
+    {
+      Serial.println("警告: xStreamBufferSend 写入数据出错");  //Optional
+    }
+
     vTaskDelay(100);
-    }
   }
+
 }
 
-
-//添加进购物车
-void consumerA(void *ptParma)
+//解码并播放
+void taskB(void *ptParma)
 {
-  EventBits_t uxBits;//用于存放事件组 24bits 的值 EventBits_t-uin16_t或者uin32_t
-  
+  size_t xReceiveBytes;
+  size_t xReadBytes = 8*10-1;//要解码的数据大小
+  String music;
+
   while(1)
   {
-    uxBits = xEventGroupSync(xEventPurchase,  //Event Group Handler
-                            ADDTOCART_0,      //将ADDTOCART_0设置为1
-                            BOUGHT_PAID_SENT, //等待BOUGHT_PAID_SENT为1
-                            TimeOut);
-    if((uxBits & BOUGHT_PAID_SENT) == BOUGHT_PAID_SENT)
+    xReceiveBytes = xStreamBufferReceive(xStreamMusic,
+                                          (void *)&music,
+                                          xReadBytes,
+                                          portMAX_DELAY);//倘若流缓存中没有数据，或者数据小于8，那么等
+    
+    if(xReceiveBytes > 0)//流缓冲区中有数据
     {
-      Serial.println("purchaseTask,已经自我了断. ");
-      vTaskDelete(NULL);
+      decode(music);
+      // 错误，不是在这里打印而是上面taskA下载音乐，Serial.println(music);
     }
   }
 }
 
-//支付
-void consumerB(void *ptParma)//完成添加到购物车后才能支付
-{
-  EventBits_t uxBits;
-  while(1)
-  {
-    //随机延迟, 模拟付款验证过程
-    for (int i = 0; i < random(100, 200); i++) vTaskDelay(10);
-    Serial.println("支付宝付款完成,可以出货...");
-    //理论上应该是一样的
-    // uxBits = xEventGroupSync(xEventPurchase,//Event Group Hanler-事件组句柄
-    //                         PAYMENT_1,    //将PAYMENT_1置1
-    //                         ADDTOCART_0,  //等待ADDTOCART_0置1
-    //                         TimeOut);
-
-    // if(uxBits & PAYMENT_1)
-    // {
-
-
-    uxBits = xEventGroupSync (xEventPurchase,  //Event Group Handler
-                             PAYMENT_1,     // 先将这个bit(s)设置为 1,然后再等待
-                             BOUGHT_PAID_SENT,  //等待这些bits为 1
-                             TimeOut);
-    if ((uxBits & BOUGHT_PAID_SENT) == BOUGHT_PAID_SENT){
-      Serial.println("purchaseTask,已经自我了断. ");
-      vTaskDelete(NULL);//删除此任务//完成当前任务后将任务删除
-    }
-  }
-}
-
-//出货
-void consumerC(void *ptParma)
+void taskC(void *ptParma)
 {
   
-  EventBits_t uxBits;
-
-  while(1)
-  {
-    for (int i = 0; i < random(100, 200); i++) vTaskDelay(10);
-    Serial.println("仓库出货完成,快递已取货...");
-    // uxBits = xEventGroupSync(xEventPurchase,
-    //                         INVENTORY_2,
-    //                         ADDTOCART_0|PAYMENT_1,
-    //                         TimeOut);
-    // if((uxBits & ADDTOCART_0) && (uxBits & PAYMENT_1))//***注意这里
-    // //错误 if(uxBits & (ADDTOCART_0|PAYMENT_1))//消费者-1返回pdPASS,或者pdFAIL
-    // {
-
-
-        uxBits = xEventGroupSync (xEventPurchase,  //Event Group Handler
-                              INVENTORY_2,     // 先将这个bit(s)设置为 1,然后再等待
-                              BOUGHT_PAID_SENT,  //等待这些bits为 1
-                              TimeOut);
-    if ((uxBits & BOUGHT_PAID_SENT) == BOUGHT_PAID_SENT)  {
-      Serial.println("purchaseTask,已经自我了断. ");
-      vTaskDelete(NULL);
-    }
-  }
-}
-
-
-
-
-void setup() {
-  Serial.begin(9600);
-  
-  xEventPurchase = xEventGroupCreate();//创建 event group-事件组
-
-  xTaskCreate(button,"button",   1024*6, NULL,               1, NULL);
-
-}
-void loop() {
-  // put your main code here, to run repeatedly:
 }
