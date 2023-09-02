@@ -1,22 +1,7 @@
-/********以下，删除任务之理由*******/
-//添加进购物车
-// void consumerA(void *ptParma)
-// {
-//   EventBits_t uxBits;//用于存放事件组 24bits 的值 EventBits_t-uin16_t或者uin32_t
-  
-//   while(1)
-//   {
-//     uxBits = xEventGroupSetBits(xEventPurchase, ADDTOCART_0);//将ADDTOCART_0设置为1
-//     if(uxBits & ADDTOCART_0)//判断是否设置完成？？？
-//     {
-//       Serial.println("商品已经添加到了购物车，付款中...");
-//       Serial.print("   Event Group Value:");
-//       Serial.println(uxBits ,BIN);//以二进制格式打印
-//     }
-//     vTaskDelete(NULL);//删除任务理由：不删除的话，会一直执行这个任务
-//   }
-// }
-/********以上，删除任务之理由*******/
+//学事件组是为了看懂别人写的代码，从10.0开始有更好的东西
+
+
+//sync 1.set-1 2.wait-1
 
 
 
@@ -25,6 +10,9 @@
 #define INVENTORY_2 (1<<2)
 
 #define ALLBITS 0xffffff  //24bits都是1
+
+//错误#define BOUGHT_PAID_SENT(ADDTOCART_0 | PAYMENT_1 | NVENTORY_2)  //000111
+#define BOUGHT_PAID_SENT  (ADDTOCART_0 | PAYMENT_1 | INVENTORY_2)  //000111
 
 EventGroupHandle_t xEventPurchase = NULL;//创建事件组
 const TickType_t TimeOut = 1000;
@@ -43,11 +31,13 @@ void button(void *ptParma)
   {
     if(digitalRead(22) == LOW)//消费者-1返回pdPASS,或者pdFAIL
     {
-      
+      xEventGroupClearBits(xEventPurchase, ALLBITS);
       Serial.println("用户真心决定下单了...");
-
-      //放一些随机的延迟，否则运行的太快了，看不出效果      
+    
+      //放一些随机的延迟，否则运行的太快了，看不出效果
       for (int i = 0; i < random(100, 200); i++) vTaskDelay(10);
+      Serial.println("商品已经添加到了购物车，付款中...");
+
       //添加进购物车
       xTaskCreate(consumerA,  "consumer a",   1024*6, NULL, 1, NULL);
       //支付
@@ -68,33 +58,15 @@ void consumerA(void *ptParma)
   
   while(1)
   {
-    uxBits = xEventGroupSetBits(xEventPurchase, ADDTOCART_0);//将ADDTOCART_0设置为1
-    if(uxBits & ADDTOCART_0)//判断是否设置完成？？？
+    uxBits = xEventGroupSync(xEventPurchase,  //Event Group Handler
+                            ADDTOCART_0,      //将ADDTOCART_0设置为1
+                            BOUGHT_PAID_SENT, //等待BOUGHT_PAID_SENT为1
+                            TimeOut);
+    if((uxBits & BOUGHT_PAID_SENT) == BOUGHT_PAID_SENT)
     {
-      Serial.println("商品已经添加到了购物车，付款中...");
-      Serial.print("   Event Group Value:");
-      Serial.println(uxBits ,BIN);//以二进制格式打印
+      Serial.println("purchaseTask,已经自我了断. ");
+      vTaskDelete(NULL);
     }
-
-    //////最终------------------------------------------------
-    uxBits = xEventGroupWaitBits(xEventPurchase,//Event Group Hanler-事件组句柄
-                                ADDTOCART_0|PAYMENT_1|INVENTORY_2,    //等待事件组中的那个bit置1，即ADDTOCART_0 = 1
-                                pdFALSE,        //执行后，对应的的bits是否重置为0
-                                pdTRUE,         //等待的bit的关系，True-&，Fall-|
-                                TimeOut);    
-    if((uxBits & ADDTOCART_0)&&(uxBits & PAYMENT_1)&&(uxBits & INVENTORY_2))
-    {
-      for (int i = 0; i < random(100, 200); i++) vTaskDelay(10);
-
-      xEventGroupClearBits(xEventPurchase, ALLBITS);//重置24bits
-      uxBits = xEventGroupGetBits(xEventPurchase);
-      Serial.println("交易完成, RESET Event Group");
-      Serial.print("   Event Group Value:");
-      Serial.println(uxBits, BIN);
-      Serial.println("");
-    }
-
-    vTaskDelete(NULL);
   }
 }
 
@@ -104,25 +76,25 @@ void consumerB(void *ptParma)//完成添加到购物车后才能支付
   EventBits_t uxBits;
   while(1)
   {
-    //###问：问什么等待完成后，还要再判断以一次相应的位是否置1，岂不是多此一举？？？
-    //等待事件组中相应的位置1，即等待添加到购物车完成
-    uxBits = xEventGroupWaitBits(xEventPurchase,//Event Group Hanler-事件组句柄
-                                ADDTOCART_0,    //等待事件组中的那个bit置1，即ADDTOCART_0 = 1
-                                pdFALSE,        //执行后，对应的的bits是否重置为0
-                                pdTRUE,         //等待的bit的关系，True-&，Fall-|
-                                TimeOut);
+    //随机延迟, 模拟付款验证过程
+    for (int i = 0; i < random(100, 200); i++) vTaskDelay(10);
+    Serial.println("支付宝付款完成,可以出货...");
+    //理论上应该是一样的
+    // uxBits = xEventGroupSync(xEventPurchase,//Event Group Hanler-事件组句柄
+    //                         PAYMENT_1,    //将PAYMENT_1置1
+    //                         ADDTOCART_0,  //等待ADDTOCART_0置1
+    //                         TimeOut);
 
-    if(uxBits & ADDTOCART_0)
-    {
-      //随机延迟, 模拟付款验证过程
-      for (int i = 0; i < random(200, 400); i++) vTaskDelay(10);
-      uxBits = xEventGroupSetBits(xEventPurchase, PAYMENT_1);//当前任务完成后在事件组中将相应的位置1，即将bit1 PAYMENT_1设置为1
-      
-      Serial.println("支付宝付款完成,可以出货...");
-      Serial.print("   Event Group Value:");
-      Serial.println(uxBits, BIN);
+    // if(uxBits & PAYMENT_1)
+    // {
 
-      //###问：为什么要吧任务删除呢,之前的代码中几乎没有过用完后就删除
+
+    uxBits = xEventGroupSync (xEventPurchase,  //Event Group Handler
+                             PAYMENT_1,     // 先将这个bit(s)设置为 1,然后再等待
+                             BOUGHT_PAID_SENT,  //等待这些bits为 1
+                             TimeOut);
+    if ((uxBits & BOUGHT_PAID_SENT) == BOUGHT_PAID_SENT){
+      Serial.println("purchaseTask,已经自我了断. ");
       vTaskDelete(NULL);//删除此任务//完成当前任务后将任务删除
     }
   }
@@ -136,21 +108,23 @@ void consumerC(void *ptParma)
 
   while(1)
   {
-    uxBits = xEventGroupWaitBits(xEventPurchase,
-                                ADDTOCART_0|PAYMENT_1,
-                                pdFALSE,
-                                pdTRUE,
-                                TimeOut);
-    if((uxBits & ADDTOCART_0) && (uxBits & PAYMENT_1))//***注意这里
-    //错误 if(uxBits & (ADDTOCART_0|PAYMENT_1))//消费者-1返回pdPASS,或者pdFAIL
-    {
-      for (int i = 0; i < random(100, 200); i++) vTaskDelay(10);
-      uxBits = xEventGroupSetBits(xEventPurchase, INVENTORY_2);//将INVENTORY_2置1
-      
-      Serial.println("仓库出货完成,快递已取货...");
-      Serial.print("   Event Group Value:");
-      Serial.println(uxBits, BIN);
+    for (int i = 0; i < random(100, 200); i++) vTaskDelay(10);
+    Serial.println("仓库出货完成,快递已取货...");
+    // uxBits = xEventGroupSync(xEventPurchase,
+    //                         INVENTORY_2,
+    //                         ADDTOCART_0|PAYMENT_1,
+    //                         TimeOut);
+    // if((uxBits & ADDTOCART_0) && (uxBits & PAYMENT_1))//***注意这里
+    // //错误 if(uxBits & (ADDTOCART_0|PAYMENT_1))//消费者-1返回pdPASS,或者pdFAIL
+    // {
 
+
+        uxBits = xEventGroupSync (xEventPurchase,  //Event Group Handler
+                              INVENTORY_2,     // 先将这个bit(s)设置为 1,然后再等待
+                              BOUGHT_PAID_SENT,  //等待这些bits为 1
+                              TimeOut);
+    if ((uxBits & BOUGHT_PAID_SENT) == BOUGHT_PAID_SENT)  {
+      Serial.println("purchaseTask,已经自我了断. ");
       vTaskDelete(NULL);
     }
   }
