@@ -60,9 +60,9 @@ void setup()
   }
   else
   {
-    xTaskCreate(taskA, "taskA", 1024*8, NULL, 1, NULL);
-    xTaskCreate(taskB, "taskB", 1024*8, NULL, 1, NULL);
-    // xTaskCreate(taskC, "taskC", 1024*8, NULL, 1, NULL);
+    xTaskCreate(taskA, "taskA", 1024*8, NULL, 1, NULL);//下载音乐
+    xTaskCreate(taskB, "taskB", 1024*8, NULL, 1, NULL);//解码并播放
+    xTaskCreate(taskC, "taskC", 1024*8, NULL, 1, NULL);
   }
 
   vTaskDelete(NULL);  //setup和loop这个loopback任务没用了，删除
@@ -86,8 +86,8 @@ void taskA(void *ptParma)
     for (int i = 0; i < random(20, 40); i++) vTaskDelay(1);
     music = randomMusic(); //随机生成一些数据
 
-//###正确的是在这里打印
-Serial.println(music);
+//#######正确的是在这里打印
+// Serial.println(music);
 
 
     xBytesSent = xStreamBufferSend(xStreamMusic,
@@ -126,7 +126,24 @@ void taskB(void *ptParma)
   }
 }
 
+//监视Stream Buffer
 void taskC(void *ptParma)
 {
-  
+  size_t xAvailable, xUsed;
+  bool isFull;
+
+  while(1)
+  {
+
+    if(xStreamBufferIsFull(xStreamMusic) == pdTRUE)  Serial.println("StreamBuffer已满！！！");
+    xUsed = xStreamBufferBytesAvailable(xStreamMusic);
+    xAvailable = xStreamBufferSpacesAvailable(xStreamMusic);
+    char msg[40];
+    sprintf(msg,"xStreamBuffer已使用 %d 字节", xUsed);
+    Serial.println(msg);
+    sprintf(msg,"xStreamBuffer可用空间 %d 字节", xAvailable);
+    Serial.println(msg);
+
+    vTaskDelay(2000);
+  }
 }
