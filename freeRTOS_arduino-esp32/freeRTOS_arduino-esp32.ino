@@ -1,149 +1,212 @@
-#include <freertos/stream_buffer.h>
+#include <LiquidCrystal_I2C.h>
+#include <freertos/message_buffer.h>
+LiquidCrystal_I2C lcd(0x27, 20, 4);
 
-StreamBufferHandle_t xStreamMusic = NULL;//创建句柄
-/******************以下,为获取音频，解码。。。不研究******************/
-#define BUZZER_PIN 32
-#define BUZZER_CHANNEL 0
 
- typedef struct {
-  int noteVal;
-  int octaveVal;
-  int restVal;
-} BUZZERTONE;
+MessageBufferHandle_t xMessageBuffer = NULL;//创建对象
 
-//随机返回生成的音乐代码，每次的长度不一样
-String randomMusic() {
-  String randomNote;
-  randomSeed(analogRead(34));
-  for (int i = 0; i < random(5, 20); i++) {
-    char note[10];
-    sprintf(note, "%d,%d,%d", random(0, 9), random(3, 6), random(100, 999));
-    randomNote = randomNote + "-" + String(note);
+
+
+/**********************以下，不重要，不研究***********************/
+//随机发送不同长度的信息
+String randomGPS() {
+  char gps[30];
+
+  static int counter = 100;
+  counter++;
+  switch (random(0, 3)) {
+    case 0:
+      // 返回 经度 纬度 海拔
+      sprintf(gps, "%d-%d-%d-%d", counter, random(100, 999), random(100, 999), random(100, 999));
+      break;
+    case 1:
+      // 返回 经度 纬度
+      sprintf(gps, "%d-%d-%d", counter, random(100, 999), random(100, 999));
+      break;
+    case 2:
+      // 返回 海拔
+      sprintf(gps, "%d-%d", counter, random(100, 999));
+      break;
+    default:
+      break;
   }
-  randomNote = randomNote.substring(1, randomNote.length());
-  return randomNote;
+
+  return String(gps);
 }
 
-//对音乐流进行解码后，通过buzzer放出来
-void decode(String music) {
-  ledcAttachPin(BUZZER_PIN, BUZZER_CHANNEL);
+
+
+//以下屎山代码是对不同长度的GPS信息进行解码，然后显示到LCD上
+void gpsDecoder(String gpsinfo) {
+  struct GPS {
+    int counter;
+    int longVal;
+    int latVal;
+    int AltVal;
+  };
+
+  String s1, s2, s3, s4;
+  int counter = 0;
+  String gpsinfo2 = gpsinfo;
   do {
-    int index = music.indexOf('-');
-    String val = music.substring(0, index);
-    BUZZERTONE buzzertone;
-    buzzertone.noteVal = val.substring(0, 1).toInt();
-    buzzertone.octaveVal = val.substring(2, 3).toInt();
-    buzzertone.restVal = val.substring(4, 7).toInt();
-    ledcWriteNote(BUZZER_CHANNEL, (note_t)buzzertone.noteVal, buzzertone.octaveVal);
-    vTaskDelay(buzzertone.restVal);
-    if (music.indexOf('-') < 0) music = "";
-    music = music.substring(index + 1, music.length());
-  } while (music.length() > 0);
-  ledcDetachPin(BUZZER_PIN);
+    counter++;
+    int index = gpsinfo.indexOf('-');
+    if (gpsinfo.indexOf('-') < 0) gpsinfo = "";
+    gpsinfo = gpsinfo.substring(index + 1, gpsinfo.length());
+  } while (gpsinfo.length() > 0);
+
+  GPS gps;
+
+  switch (counter) {
+    case 2:
+      gps.counter = gpsinfo2.substring(0, 3).toInt();
+      gps.longVal = -1;
+      gps.latVal = -1;
+      gps.AltVal = gpsinfo2.substring(4, 7).toInt();
+      break;
+    case 3:
+      gps.counter = gpsinfo2.substring(0, 3).toInt();
+      gps.longVal = gpsinfo2.substring(4, 7).toInt();
+      gps.latVal = gpsinfo2.substring(8, 11).toInt();
+      gps.AltVal = -1;
+      break;
+    case 4:
+      gps.counter = gpsinfo2.substring(0, 3).toInt();
+      gps.longVal = gpsinfo2.substring(4, 7).toInt();
+      gps.latVal = gpsinfo2.substring(8, 11).toInt();
+      gps.AltVal = gpsinfo2.substring(12, 15).toInt();
+      break;
+    default:
+      break;
+  }
+
+  //return gps;
+  // Serial.println(gps.counter);
+  // Serial.println(gps.longVal);
+  // Serial.println(gps.latVal);
+  // Serial.println(gps.AltVal);
+  // Serial.println();
+
+  lcd.setCursor(13, 0);
+  lcd.print(gps.counter);
+
+  lcd.setCursor(0, 1);
+  lcd.print("     LONG : ");
+  if (gps.longVal == -1) {
+    lcd.print("N/C");
+  } else {
+    lcd.print(gps.longVal);
+  }
+
+  lcd.setCursor(0, 2);
+  lcd.print("      LAT : ");
+  if (gps.latVal == -1) {
+    lcd.print("N/C");
+  } else {
+    lcd.print(gps.latVal);
+  }
+
+  lcd.setCursor(0, 3);
+  lcd.print("      ALT : ");
+  if (gps.AltVal == -1) {
+    lcd.print("N/C");
+  } else {
+    lcd.print(gps.AltVal);
+    //Serial.println(gpsinfo2);
+    //Serial.println(gps.AltVal);
+  }
+
 }
-/******************以上，为获取音频，解码。。。不研究******************/
+/**********************以上，不重要，不研究***********************/
 
 
+
+
+
+void readGPS(void *ptParam)
+{
+  size_t xBytesSent;
+  String gpsInfo;
+  while(1)
+  {
+    gpsInfo = randomGPS();//随机发送不同长度的信息
+    xBytesSent = xMessageBufferSend(xMessageBuffer,
+                                    (void *)&gpsInfo
+                                    sizeof(gpsInfo),
+                                    portMAX_DELAY);
+    if(xBytesSent != sizeof(gpsInfo))
+    {
+      Serial.println("危险: xMessageBufferSend 发送数据不完整");
+    }
+    else 
+    {
+      vTaskDelay(3000);
+    }
+  }
+}
+
+
+void showGPS(void *ptParam)
+{
+  size_t xReceivedBytes;
+  String gpsInfo;
+  const size_t xMessageSizeMax = 100;
+
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(0, 0);
+  lcd.print("   GPS INFO"); //clear this line
+
+  while(1)
+  {
+    xReceivedBytes = xMessageBufferReceive(xMessageBuffer,
+                                           (void *)&gpsInfo,
+                                           xMessageSizeMax,//######最大数据
+                                           portMAX_DELAY);
+    if(xReceivedBytes > 0)
+    {
+      gpsDecoder(gpsInfo);
+    }
+
+    vTaskDelay(1000);
+  }
+
+}
+void monitorTask(void *ptParam)
+{
+  size_t xAvailable, xUsed;
+  bool isFull;
+  while(1)
+  {
+    if(xMessageBufferIsFull(xMessageBuffer) == pdTURE) Serial.println("xMessageBuffer 已满");
+    xAvailable = xMessageBufferSpacesAvailable(xMessageBuffer);
+    char mas[40];
+    sprintf(msg, "xMessageBuffer可用空间为 %d 字节", xAvailable);
+    Serial.println(msg);
+
+    vTaskDelay(1000);
+  }
+}
 
 void setup()
 {
-   Serial.begin(115200);
-   //设置Stream Buffer最大尺寸，若果超出内存空间，那么创建Steam Buffer就会失败
-   const size_t xStreamBufferSizeBytes = 540;
-   const size_t xTriggerLevel = 8;//Stream Buff内部数据超过这个值，才会被读取--->相当于要传递的数据一帧有多少
-  
-   xStreamMusic = xStreamBufferCreate(xStreamBufferSizeBytes, xTriggerLevel);//创建Stream Buffer xStreamBufferSizeBytes-StreamBuffer大小，xTriggerLevel-一帧数据大小
-  
-  if(xStreamMusic == NULL)//创建失败，创建成功的话内部分配了内存，不能为NULL
-  {
-    Serial.println("UNABLE TO CREATE STREAM BUFFER");
-  }
-  else
-  {
-    xTaskCreate(taskA, "taskA", 1024*8, NULL, 1, NULL);//下载音乐
-    xTaskCreate(taskB, "taskB", 1024*8, NULL, 1, NULL);//解码并播放
-    xTaskCreate(taskC, "taskC", 1024*8, NULL, 1, NULL);
-  }
+  Serial.begin(115200);
+  const size_t xMessageBufferSizeBytes = 100;//收发数据大小
+  xMessageBuffer = xMessageBufferCreate(xMessageBufferSizeBytes);//创建MessageBuffer信息缓冲区
 
-  vTaskDelete(NULL);  //setup和loop这个loopback任务没用了，删除
+  if(xMessageBuffer == NULL)
+  {
+    Serial.println("Unable to Create Message Buffer");
+  }
+  else 
+  {
+    xTaskCreate(readGPS, "Read GPX", 1024 * 4, NULL, 1, NULL);
+    xTaskCreate(showGPS, "Show GPX", 1024 * 4, NULL, 1, NULL);
+    xTaskCreate(monitorTask, "Monitor Message Buffer", 1024 * 8, NULL, 1, NULL); //对Stream Buffer进行监控
+  }
 }
 
 void loop()
 {
-
-}
-
-
-//下载音乐
-void taskA(void *ptParma)
-{
-  String music;
-  size_t xBytesSent;
-
-  while(1)
-  {
-    //从网络下载音乐，放一些随机的延迟
-    for (int i = 0; i < random(20, 40); i++) vTaskDelay(1);
-    music = randomMusic(); //随机生成一些数据
-
-//#######正确的是在这里打印
-// Serial.println(music);
-
-
-    xBytesSent = xStreamBufferSend(xStreamMusic,
-                                  (void *)&music, //复制到流缓冲区的内容
-                                  sizeof(music),  //复制到流缓冲区的最大字节数
-                                  portMAX_DELAY); //等到流缓冲区中有足够的空间
-    if(xBytesSent != sizeof(music))//确定尺寸
-    {
-      Serial.println("警告: xStreamBufferSend 写入数据出错");  //Optional
-    }
-
-    vTaskDelay(100);
-  }
-
-}
-
-//解码并播放
-void taskB(void *ptParma)
-{
-  size_t xReceiveBytes;
-  size_t xReadBytes = 8*10-1;//要解码的数据大小
-  String music;
-
-  while(1)
-  {
-    xReceiveBytes = xStreamBufferReceive(xStreamMusic,
-                                          (void *)&music,
-                                          xReadBytes,
-                                          portMAX_DELAY);//倘若流缓存中没有数据，或者数据小于8，那么等
-    
-    if(xReceiveBytes > 0)//流缓冲区中有数据
-    {
-      decode(music);
-      // 错误，不是在这里打印而是上面taskA下载音乐，Serial.println(music);
-    }
-  }
-}
-
-//监视Stream Buffer
-void taskC(void *ptParma)
-{
-  size_t xAvailable, xUsed;
-  bool isFull;
-
-  while(1)
-  {
-
-    if(xStreamBufferIsFull(xStreamMusic) == pdTRUE)  Serial.println("StreamBuffer已满！！！");
-    xUsed = xStreamBufferBytesAvailable(xStreamMusic);
-    xAvailable = xStreamBufferSpacesAvailable(xStreamMusic);
-    char msg[40];
-    sprintf(msg,"xStreamBuffer已使用 %d 字节", xUsed);
-    Serial.println(msg);
-    sprintf(msg,"xStreamBuffer可用空间 %d 字节", xAvailable);
-    Serial.println(msg);
-
-    vTaskDelay(2000);
-  }
+  
 }
