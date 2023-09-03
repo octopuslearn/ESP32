@@ -43,7 +43,21 @@ void taskGive(void *ptParam)
   {
     if (digitalRead(23) == LOW) 
     {
-      xResult = xTaskNotify(xTaskWait, 0, eIncrement);//Increment增量，即累加//对方的notification value +1
+      // xResult = xTaskNotify(xTaskWait, 0, eIncrement);//Increment增量，即累加//对方的notification value +1
+      
+      // xResult = xTaskNotify(xTaskWait, 0, eNoAction);//不设置对方的notification value
+      //  xResult = xTaskNotify(xTaskWait, (1UL << 4UL), eSetBits);//在原有的基础上将第5位置1//16
+                                                              //成功
+      //xResult = xTaskNotify(xTaskWait, 0b110,eSetValueWithOverwrite);//覆盖-不是在原有基础上操作，是直接设置110 //6  //不管有没有被处理
+
+//demo5
+      // xResult = xTaskNotify(xTaskWait, (1UL << 4UL), eSetBits);//在原有的基础上将第5位置1//16------》》》未被处理
+      // xResult = xTaskNotify(xTaskWait, 0b010,eSetValueWithoutOverwrite);//查看在此之前的notification有没有被处理，如果有的话就不会覆盖//16
+                                                                                                                                  //失败
+      
+      
+      
+      
       Serial.println(xResult ==  pdPASS ? "成功\n" : "失败\n");
 
       vTaskDelay(120);
