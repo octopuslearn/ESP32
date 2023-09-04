@@ -1,0 +1,28 @@
+{
+    "C_Cpp.intelliSenseEngine": "default",
+    "idf.adapterTargetName": "esp32",
+    "idf.customExtraPaths": "D:\\SoftwareInstall\\Espressif\\tools\\xtensa-esp-elf-gdb\\12.1_20221002\\xtensa-esp-elf-gdb\\bin;D:\\SoftwareInstall\\Espressif\\tools\\riscv32-esp-elf-gdb\\12.1_20221002\\riscv32-esp-elf-gdb\\bin;D:\\SoftwareInstall\\Espressif\\tools\\xtensa-esp32-elf\\esp-12.2.0_20230208\\xtensa-esp32-elf\\bin;D:\\SoftwareInstall\\Espressif\\tools\\xtensa-esp32s2-elf\\esp-12.2.0_20230208\\xtensa-esp32s2-elf\\bin;D:\\SoftwareInstall\\Espressif\\tools\\xtensa-esp32s3-elf\\esp-12.2.0_20230208\\xtensa-esp32s3-elf\\bin;D:\\SoftwareInstall\\Espressif\\tools\\riscv32-esp-elf\\esp-12.2.0_20230208\\riscv32-esp-elf\\bin;D:\\SoftwareInstall\\Espressif\\tools\\esp32ulp-elf\\2.35_20220830\\esp32ulp-elf\\bin;D:\\SoftwareInstall\\Espressif\\tools\\cmake\\3.24.0\\bin;D:\\SoftwareInstall\\Espressif\\tools\\openocd-esp32\\v0.12.0-esp32-20230419\\openocd-esp32\\bin;D:\\SoftwareInstall\\Espressif\\tools\\ninja\\1.10.2;D:\\SoftwareInstall\\Espressif\\tools\\idf-exe\\1.0.3;D:\\SoftwareInstall\\Espressif\\tools\\ccache\\4.8\\ccache-4.8-windows-x86_64;D:\\SoftwareInstall\\Espressif\\tools\\dfu-util\\0.11\\dfu-util-0.11-win64;D:\\SoftwareInstall\\Espressif\\tools\\esp-rom-elfs\\20230320",
+    "idf.customExtraVars": {
+        "OPENOCD_SCRIPTS": "D:\\SoftwareInstall\\Espressif\\tools\\openocd-esp32\\v0.12.0-esp32-20230419/openocd-esp32/share/openocd/scripts",
+        "IDF_CCACHE_ENABLE": "1",
+        "ESP_ROM_ELF_DIR": "D:\\SoftwareInstall\\Espressif\\tools\\esp-rom-elfs\\20230320/"
+    },
+    "idf.espIdfPathWin": "D:/SoftwareInstall/Espressif/frameworks/esp-idf-v5.1/",
+    "idf.openOcdConfigs": [
+        "interface/ftdi/esp32_devkitj_v1.cfg",
+        "target/esp32.cfg"
+    ],
+    "idf.portWin": "COM5",
+    "idf.pythonBinPathWin": "D:/SoftwareInstall/Espressif/python_env/idf5.1_py3.11_env/Scripts/python.exe",
+    "idf.toolsPathWin": "D:\\SoftwareInstall\\Espressif",
+    "idf.flashType": "UART",
+    "files.associations": {
+        "esp_log.h": "c",
+        "task.h": "c",
+        "iosfwd": "c",
+        "xlocbuf": "c",
+        "filesystem": "c",
+        "freertos.h": "c",
+        "esp_err.h": "c"
+    }
+}
