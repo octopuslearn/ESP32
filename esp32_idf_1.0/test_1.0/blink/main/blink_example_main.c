@@ -96,6 +96,8 @@
 #include "freertos/task.h"
 #include "esp_log.h"
 
+#include "my_fuction/print.h"
+
 
 extern void my_print();
 

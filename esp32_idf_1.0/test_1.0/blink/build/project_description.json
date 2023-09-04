@@ -1,7 +1,7 @@
 {
     "version":            "1",
     "project_name":       "blink",
-    "project_version":    "0474bbc-dirty",
+    "project_version":    "e51f992-dirty",
     "project_path":       "E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/blink",
     "idf_path":           "D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1",
     "build_dir":          "E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/blink/build",
@@ -805,8 +805,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__led_strip" ],
             "file": "E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/blink/build/esp-idf/main/libmain.a",
-            "sources": [ "E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/blink/main/blink_example_main.c", "E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/blink/main/print.c" ],
-            "include_dirs": [ "." ]
+            "sources": [ "E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/blink/main/blink_example_main.c", "E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/blink/main/my_fuction/print.c" ],
+            "include_dirs": [ ".", "my_fuction" ]
         },
         "mbedtls": {
             "alias": "idf::mbedtls",
