@@ -97,10 +97,15 @@
 #include "esp_log.h"
 
 
+extern void my_print();
+
+
+
 void app_main(void)
 {
     while (1) {
         ESP_LOGI("main", "hello world\n");
+        my_print();
         vTaskDelay(10000 / portTICK_PERIOD_MS);
     }
 }
