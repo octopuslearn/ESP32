@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\abort.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\assert.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\heap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\locks.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\poll.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\pthread.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\random.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\reent_init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\newlib_init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\syscalls.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\termios.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\stdatomic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\time.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\sysconf.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\realpath.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\port\esp_time_impl.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{F672C0E7-F2DB-3CEA-A7D6-7EF7221497FC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

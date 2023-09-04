@@ -1,0 +1,13 @@
+Performing C SOURCE FILE Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS failed with the following output:
+Change Dir: E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Installation_app/vs2022/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_5d3e8.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && 适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
+
+  用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.37.32822 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  cl /c /Zi /Wall /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5d3e8.dir\Debug\\" /Fd"cmTC_5d3e8.dir\Debug\vc143.pdb" /external:W4 /Gd /TC /errorReport:queue  -mlongcalls -Wextra -Wwrite-strings -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow -Wformat-signedness E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\CMakeFiles\CMakeTmp\src.c
+cl : 命令行  error D8021: 无效的数值参数“/Wextra” [E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\CMakeFiles\CMakeTmp\cmTC_5d3e8.vcxproj]
+
+
+Source file was:
+int main(void) { return 0; }

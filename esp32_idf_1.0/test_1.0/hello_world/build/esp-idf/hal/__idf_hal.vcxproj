@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x86</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{39CEC45F-EF4A-361E-8316-D46BB9B27A55}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>__idf_hal</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\esp-idf\hal\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">__idf_hal.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">libhal</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.a</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\esp-idf\hal\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">__idf_hal.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">libhal</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.a</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\esp-idf\hal\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">__idf_hal.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">libhal</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.a</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\esp-idf\hal\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">__idf_hal.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">libhal</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.a</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\config;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\platform_port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\platform_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\portable\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include\freertos;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\arch\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\.;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\private_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\heap\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\log\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_common\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\include\private;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps\sntp;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\lwip\src\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\freertos\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include\arch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -mlongcalls -ffunction-sections -fdata-sections -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fmacro-prefix-map=E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world=. -fmacro-prefix-map=D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -std=gnu17 -Wno-old-style-declaration -Wno-format</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;configENABLE_FREERTOS_DEBUG_OCDAWARE=1;_GNU_SOURCE;IDF_VER="v5.1.1-dirty";ESP_PLATFORM;_POSIX_READER_WRITER_LOCKS;SOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;configENABLE_FREERTOS_DEBUG_OCDAWARE=1;_GNU_SOURCE;IDF_VER=\"v5.1.1-dirty\";ESP_PLATFORM;_POSIX_READER_WRITER_LOCKS;SOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\config;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\platform_port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\platform_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\portable\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include\freertos;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\arch\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\.;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\private_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\heap\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\log\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_common\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\include\private;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps\sntp;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\lwip\src\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\freertos\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include\arch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\config;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\platform_port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\platform_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\portable\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include\freertos;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\arch\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\.;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\private_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\heap\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\log\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_common\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\include\private;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps\sntp;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\lwip\src\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\freertos\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include\arch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\config;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\platform_port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\platform_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\portable\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include\freertos;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\arch\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\.;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\private_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\heap\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\log\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_common\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\include\private;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps\sntp;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\lwip\src\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\freertos\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include\arch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -mlongcalls -ffunction-sections -fdata-sections -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fmacro-prefix-map=E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world=. -fmacro-prefix-map=D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -std=gnu17 -Wno-old-style-declaration -Wno-format</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;configENABLE_FREERTOS_DEBUG_OCDAWARE=1;_GNU_SOURCE;IDF_VER="v5.1.1-dirty";ESP_PLATFORM;_POSIX_READER_WRITER_LOCKS;SOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;configENABLE_FREERTOS_DEBUG_OCDAWARE=1;_GNU_SOURCE;IDF_VER=\"v5.1.1-dirty\";ESP_PLATFORM;_POSIX_READER_WRITER_LOCKS;SOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\config;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\platform_port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\platform_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\portable\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include\freertos;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\arch\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\.;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\private_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\heap\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\log\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_common\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\include\private;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps\sntp;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\lwip\src\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\freertos\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include\arch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\config;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\platform_port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\platform_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\portable\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include\freertos;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\arch\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\.;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\private_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\heap\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\log\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_common\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\include\private;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps\sntp;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\lwip\src\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\freertos\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include\arch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\config;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\platform_port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\platform_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\portable\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include\freertos;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\arch\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\.;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\private_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\heap\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\log\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_common\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\include\private;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps\sntp;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\lwip\src\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\freertos\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include\arch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -mlongcalls -ffunction-sections -fdata-sections -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fmacro-prefix-map=E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world=. -fmacro-prefix-map=D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -std=gnu17 -Wno-old-style-declaration -Wno-format</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;configENABLE_FREERTOS_DEBUG_OCDAWARE=1;_GNU_SOURCE;IDF_VER="v5.1.1-dirty";ESP_PLATFORM;_POSIX_READER_WRITER_LOCKS;SOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;configENABLE_FREERTOS_DEBUG_OCDAWARE=1;_GNU_SOURCE;IDF_VER=\"v5.1.1-dirty\";ESP_PLATFORM;_POSIX_READER_WRITER_LOCKS;SOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\config;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\platform_port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\platform_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\portable\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include\freertos;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\arch\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\.;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\private_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\heap\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\log\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_common\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\include\private;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps\sntp;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\lwip\src\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\freertos\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include\arch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\config;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\platform_port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\platform_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\portable\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include\freertos;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\arch\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\.;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\private_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\heap\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\log\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_common\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\include\private;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps\sntp;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\lwip\src\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\freertos\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include\arch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\config;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\platform_port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\platform_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\portable\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include\freertos;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\arch\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\.;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\private_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\heap\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\log\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_common\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\include\private;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps\sntp;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\lwip\src\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\freertos\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include\arch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -mlongcalls -ffunction-sections -fdata-sections -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fmacro-prefix-map=E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world=. -fmacro-prefix-map=D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -std=gnu17 -Wno-old-style-declaration -Wno-format</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;configENABLE_FREERTOS_DEBUG_OCDAWARE=1;_GNU_SOURCE;IDF_VER="v5.1.1-dirty";ESP_PLATFORM;_POSIX_READER_WRITER_LOCKS;SOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;configENABLE_FREERTOS_DEBUG_OCDAWARE=1;_GNU_SOURCE;IDF_VER=\"v5.1.1-dirty\";ESP_PLATFORM;_POSIX_READER_WRITER_LOCKS;SOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\config;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\platform_port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\platform_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\portable\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include\freertos;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\arch\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\.;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\private_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\heap\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\log\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_common\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\include\private;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps\sntp;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\lwip\src\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\freertos\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include\arch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\config;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\platform_port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\newlib\platform_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\FreeRTOS-Kernel\portable\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include\freertos;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\freertos\esp_additions\arch\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\include\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\.;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_hw_support\port\esp32s3\private_include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\heap\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\log\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\soc\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\include\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_rom\esp32s3;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_common\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\soc;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\esp_system\port\include\private;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\xtensa\esp32s3\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\include\apps\sntp;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\lwip\src\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\freertos\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include;D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\lwip\port\esp32xx\include\arch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1/components/hal/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+E:\project\esp32_idf\esp_idf_v5.1.1\tools\tools\cmake\3.24.0\bin\cmake.exe -SE:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world -BE:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world/build --check-stamp-file E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world/build/esp-idf/hal/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\esp-idf\hal\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1/components/hal/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+E:\project\esp32_idf\esp_idf_v5.1.1\tools\tools\cmake\3.24.0\bin\cmake.exe -SE:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world -BE:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world/build --check-stamp-file E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world/build/esp-idf/hal/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\esp-idf\hal\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1/components/hal/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+E:\project\esp32_idf\esp_idf_v5.1.1\tools\tools\cmake\3.24.0\bin\cmake.exe -SE:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world -BE:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world/build --check-stamp-file E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world/build/esp-idf/hal/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\esp-idf\hal\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1/components/hal/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+E:\project\esp32_idf\esp_idf_v5.1.1\tools\tools\cmake\3.24.0\bin\cmake.exe -SE:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world -BE:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world/build --check-stamp-file E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world/build/esp-idf/hal/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\esp-idf\hal\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\mpu_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\efuse_hal.c">
+      <ObjectFileName>$(IntDir)/efuse_hal.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\efuse_hal.c">
+      <ObjectFileName>$(IntDir)/esp32s3/efuse_hal.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\mmu_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\cache_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\rtc_io_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\gpio_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\uart_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\uart_hal_iram.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\adc_hal_common.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\adc_oneshot_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\clk_tree_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\spi_flash_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\spi_flash_hal_iram.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\spi_flash_encrypt_hal_iram.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\systimer_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\timer_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\timer_hal_iram.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\ledc_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\ledc_hal_iram.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\i2c_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\i2c_hal_iram.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\rmt_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\pcnt_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\mcpwm_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\twai_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\twai_hal_iram.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\gdma_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\i2s_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\sdm_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\adc_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\lcd_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\sha_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\aes_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\brownout_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\spi_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\spi_hal_iram.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\spi_slave_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\spi_slave_hal_iram.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\spi_slave_hd_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\hmac_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\ds_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\spi_flash_hal_gpspi.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\touch_sensor_hal.c">
+      <ObjectFileName>$(IntDir)/touch_sensor_hal.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\usb_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\usb_phy_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\xt_wdt_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\touch_sensor_hal.c">
+      <ObjectFileName>$(IntDir)/esp32s3/touch_sensor_hal.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\esp32s3\rtc_cntl_hal.c" />
+    <ClCompile Include="D:\Installation_app\Espressif\frameworks\esp-idf-v5.1.1\components\hal\usb_dwc_hal.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="E:\project\ESP32_learn\esp32_idf_1.0\test_1.0\hello_world\build\esp-idf\log\__idf_log.vcxproj">
+      <Project>{A5C2A265-4E1B-37F3-8740-7C1EF3403979}</Project>
+      <Name>__idf_log</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

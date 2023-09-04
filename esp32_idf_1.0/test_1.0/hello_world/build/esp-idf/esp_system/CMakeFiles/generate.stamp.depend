@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1/components/esp_system/CMakeLists.txt
+D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1/components/esp_system/ld/ld.cmake
+E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world/build/ldgen_libraries.in
