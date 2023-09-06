@@ -1,4 +1,0 @@
-# CMake generation dependency list for this directory.
-D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1/components/bootloader/CMakeLists.txt
-E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world/build/bootloader-flash_args
-E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/hello_world/build/esp-idf/bootloader/bootloader-flash_args.in

@@ -1,6 +1,0 @@
-source "D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1/components/bootloader/Kconfig.projbuild"
-source "D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1/components/esp_app_format/Kconfig.projbuild"
-source "D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1/components/esp_rom/Kconfig.projbuild"
-source "D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1/components/esptool_py/Kconfig.projbuild"
-source "D:/Installation_app/Espressif/frameworks/esp-idf-v5.1.1/components/partition_table/Kconfig.projbuild"
-source "E:/project/ESP32_learn/esp32_idf_1.0/test_1.0/blink/main/Kconfig.projbuild"
